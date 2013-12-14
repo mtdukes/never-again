@@ -7,6 +7,8 @@ Never Again!
 
 The easier it is == the more likely it will happen.
 
+Currently attempting to adapt this app so we can do the same thing at [WRAL News](http://www.wral.com).
+
 Caveats
 -------
 
