@@ -82,13 +82,11 @@ $processButton.on('click', function() {
     tableOutput = buildTable(rows, tableType);
 
     if ($tableHeader.val()) {
-        tableHeader = $('<div/>', {
+        tableHeader = $('<h4/>', {
             text: $tableHeader.val()
         }).css({
-            'text-align': 'center',
-            'font-weight': 'bold',
-            'font-size': '15px',
-            'margin-top': '5px'
+            'margin-top': '0px',
+            'padding-top': '0px'
         });
     }
 
@@ -100,31 +98,32 @@ $processButton.on('click', function() {
                     href: $tableSourceUrl.val()
                 }).clone()).html()
             }).css({
-                'text-align': 'center',
+                'text-align': 'right',
                 'font-style': 'italic',
-                'font-size': '13px',
-                'color': '#666666'
+                'font-size': '11px',
+                'color': '#ABABAB'
             });
         } else {
             tableSource = $('<div/>', {
                 text: 'Source: ' + $tableSource.val()
             }).css({
-                'text-align': 'center',
+                'text-align': 'right',
                 'font-style': 'italic',
-                'font-size': '13px',
-                'color': '#666666'
+                'font-size': '11px',
+                'color': '#ABABAB'
             });
         }
     }
 
-    payload = '<!-- Begin table embed -->\n\n';
+    payload = '<!-- Paste into custom embed -->\n\n' + '<div style="float: right; margin: 0px 0px 10px 10px;"><style type="text/css">tr.even { background-color: #EEE;</style>';
     if (tableHeader) {
-        payload += $('<div/>').append(tableHeader.clone()).html();
+        payload += $('<h4/>').append(tableHeader.clone()).html();
     }
+    payload += tableOutput;
     if (tableSource) {
         payload += $('<div/>').append(tableSource.clone()).html();
     }
-    payload += tableOutput + '\n\n<!-- End table embed -->';
+    payload += '</div>' + '\n\n<!-- End table embed -->';    
 
     $tableOutput.val(payload);
     $displayArea.html(payload);
@@ -193,6 +192,7 @@ function buildTable(rows, type) {
     $.each(rows, function(i,row) {
         $('<tr/>').appendTo(tbody);
 
+        
         if (type === 'basic') {
             if ((i + 1) % 2 === 0) {
                 tbody.find('tr').last().addClass('even');

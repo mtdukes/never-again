@@ -13,7 +13,7 @@ textarea {
 
 .display-area {
     width: 636px;
-    font-family: Georgia, Times, serif;
+    font-family: "PT Sans",Helvetica,sans-serif;
 }
 
 .display-area a {
@@ -26,8 +26,9 @@ textarea {
 }
 
 .ttrib-table table.data, dl.data {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 11px;
+    font-family: "Droid Sans",Helvetica,sans serif;
+    color: #333;
+    font-size: 12px;
     margin: 0.5em 0;
     width: 100%;
     line-height: 1;
@@ -49,10 +50,6 @@ textarea {
 .ttrib-table table.data tr > * {
     padding: 4px;
     vertical-align: top;
-}
-
-.ttrib-table table.data tr.even {
-    background-color: #EEE;
 }
 
 .ttrib-table .data.tablesorter thead > tr > * {
