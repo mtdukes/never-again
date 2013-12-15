@@ -115,7 +115,7 @@ $processButton.on('click', function() {
         }
     }
 
-    payload = '<!-- Paste into custom embed -->\n\n' + '<div style="float: right; margin: 0px 0px 10px 10px;"><style type="text/css">tr.even { background-color: #EEE;</style>';
+    payload = '<!-- Paste into custom embed -->\n\n' + '<div style="float: right; margin: 0px 0px 10px 10px; font-size:12px;"><style type="text/css">tr.even { background-color: #EEE;} tr > * {padding: 4px; vertical-align: top;}</style>';
     if (tableHeader) {
         payload += $('<h4/>').append(tableHeader.clone()).html();
     }
