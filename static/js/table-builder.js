@@ -115,19 +115,27 @@ $processButton.on('click', function() {
         }
     }
 
-    payload = '<!-- Paste into custom embed -->\n\n' + '<div style="float: right; margin: 0px 0px 10px 10px; font-size:12px;"><style type="text/css">tr.even { background-color: #EEE;} tr > * {padding: 4px; vertical-align: top;}</style>';
+    if (tableType === 'sortable'){
+    	payload = "<!-- Paste into custom embed --> <style type=\"text/css\"> tr.even { background-color: #EEE; }  tr > * { padding: 4px; vertical-align: top; }  .data.tablesorter thead > tr > * { background-color: #eae9e3; border: 1px solid white; vertical-align: middle; }  .tablesorter > thead > tr > th { background: url(\"http://write30.com/assets/img/bg.gif\") no-repeat scroll right center; cursor: pointer; padding-right: 16px; } .tablesorter > thead > tr > .headerSortUp {background: url(\"http://write30.com/assets/img/asc.gif\") no-repeat scroll right center; } .tablesorter > thead > tr > .headerSortDown { background: url(\"http://write30.com/assets/img/desc.gif\") no-repeat scroll right center; } </style> <script type='text/javascript' src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script> <script type='text/javascript' src=\"http://write30.com/assets/js/jquery.tablesorter.min.js\"></script> <script type='text/javascript'> $(window).load(function(){ $('.data.tablesorter').tablesorter(); }); </script> <div style=\"float: right; margin: 0px 0px 10px 10px; font-size:12px;\">"
+    }
+    else {
+    	payload = '<!-- Paste into custom embed -->\n\n' + '<div style="float: right; margin: 0px 0px 10px 10px; font-size:12px;"><style type="text/css">tr.even { background-color: #EEE;} tr > * {padding: 4px; vertical-align: top;} </style>';
+    }
+    /*payload = '<!-- Paste into custom embed -->\n\n' + '<div style="float: right; margin: 0px 0px 10px 10px; font-size:12px;"><style type="text/css">tr.even { background-color: #EEE;} tr > * {padding: 4px; vertical-align: top;} </style>';*/
+    
     if (tableHeader) {
         payload += $('<h4/>').append(tableHeader.clone()).html();
     }
     payload += tableOutput;
     if (tableSource) {
         payload += $('<div/>').append(tableSource.clone()).html();
-    }
-    payload += '</div>' + '\n\n<!-- End table embed -->';    
+    }  
+    
+    payload += '</div>' + '\n\n<!-- End table embed -->';
 
     $tableOutput.val(payload);
     $displayArea.html(payload);
-
+    
     if (tableType === 'sortable') {
         $('table').tablesorter({
             textExtraction:'complex',
